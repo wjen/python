@@ -1,0 +1,16 @@
+{% extends 'theblog/base.html' %}
+{% block title %}
+Comment on blog post!
+{% endblock %}
+{% block content %}
+<h3>Add Comment</h3>
+<br>
+<form method="POST">
+    <div class="form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- getabsoluteurl takes care of post button logic -->
+        <button class='btn btn-secondary'>Add Comment</button>
+    </div>
+</form>
+{% endblock %}

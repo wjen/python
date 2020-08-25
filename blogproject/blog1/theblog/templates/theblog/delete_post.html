@@ -1,0 +1,30 @@
+{% extends 'theblog/base.html' %}
+{% block title %}
+Delete Post
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.id == post.author.id %}
+
+<h3>Delete: {{ post.title }}</h3>
+<br>
+<form action="" method="POST">
+    <div class="form-group">
+        {% csrf_token %}
+        <!-- no longer need a form -->
+        <!-- {{ form.as_p}} -->
+        <!-- getabsoluteurl takes care of post button logic -->
+        <strong>Are you sure?</strong> <br><br>
+        <button class='btn btn-secondary'>Delete Post!</button>
+    </div>
+</form>
+{% else %}
+<h3>You do not have access to this page</h3>
+{% endif %}
+
+{% else %}
+
+<h3>You do not have access to this page</h3>
+{% endif %}
+
+{% endblock %}

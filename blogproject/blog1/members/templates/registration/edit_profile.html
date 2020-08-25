@@ -1,0 +1,18 @@
+{% extends 'theblog/base.html' %}
+{% block title %}
+Edit settings
+{% endblock %}
+{% block content %}
+<h3>Edit settings</h3>
+<br>
+{{ user.profile.bio }}
+<br><br>
+<form method="POST">
+    <div class="form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- getabsoluteurl takes care of post button logic -->
+        <button class='btn btn-secondary'>Update Settings</button>
+    </div>
+</form>
+{% endblock %}

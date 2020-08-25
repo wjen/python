@@ -1,0 +1,21 @@
+{% extends 'theblog/base.html' %}
+{% block title %}
+Create a new profile page
+{% endblock %}
+{% block content %}
+<h3>Create Profile</h3>
+<br>
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- getabsoluteurl takes care of post button logic -->
+        <button class='btn btn-secondary'>Create Profile Page</button>
+    </div>
+</form>
+<!-- no longer using this shortcut method -->
+<!-- <script>
+    let name = {{ user.id }}
+    document.getElementById('elder').value = name
+</script> -->
+{% endblock %}

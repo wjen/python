@@ -1,0 +1,31 @@
+{% extends 'theblog/base.html' %}
+{% block title %}
+Edit Profile
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.id == profile.user.id %}
+<h3>Edit Profile Page</h3>
+<br>
+<form action="" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <!-- getabsoluteurl takes care of post button logic -->
+        <button class='btn btn-secondary'>Edit Profile</button>
+    </div>
+</form>
+<script>
+    let name = {{ user.id }}
+    document.getElementById('elder').value = name
+</script>
+{% else %}
+Unauthorized access
+{% endif %}
+
+{% else %}
+
+Your not allowed here
+{% endif %}
+{% endblock %}

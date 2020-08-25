@@ -1,0 +1,26 @@
+{% extends 'theblog/base.html' %}
+{% block title %}
+Create a new blog post!
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<h3>Add Post</h3>
+<br>
+<form action="" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        {% csrf_token %}
+        <!-- form.media used for images -->
+        {{ form.media }}
+        {{ form.as_p }}
+        <!-- getabsoluteurl takes care of post button logic -->
+        <button class='btn btn-secondary'>Post</button>
+    </div>
+</form>
+<script>
+    let name = {{ user.id }}
+    document.getElementById('elder').value = name
+</script>
+{% else %}
+Unathorized access
+{% endif %}
+{% endblock %}

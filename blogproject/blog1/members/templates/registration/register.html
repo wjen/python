@@ -1,0 +1,15 @@
+{% extends 'theblog/base.html' %}
+{% block title %}
+Register
+{% endblock %}
+{% block content %}
+<h3>Register</h3>
+<form action="" method="POST">
+    <div class="form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- getabsoluteurl takes care of post button logic -->
+        <button class='btn btn-secondary'>Register</button>
+    </div>
+</form>
+{% endblock %}

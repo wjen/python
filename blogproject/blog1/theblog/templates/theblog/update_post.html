@@ -1,0 +1,25 @@
+{% extends 'theblog/base.html' %}
+{% block title %}
+Edit Post
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.id == post.author.id %}
+<h3>Update Post</h3>
+<form action="" method="POST">
+    <div class="form-group">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <!-- getabsoluteurl takes care of post button logic -->
+        <button class='btn btn-secondary'>Update</button>
+    </div>
+</form>
+{% else %}
+<h3>You do not have access to this page</h3>
+{% endif %}
+
+{% else %}
+<h3>You do not have access to this page</h3>
+{% endif %}
+{% endblock %}

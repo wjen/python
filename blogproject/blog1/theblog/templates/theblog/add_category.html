@@ -1,0 +1,16 @@
+{% extends 'theblog/base.html' %}
+{% block title %}
+Create a category
+{% endblock %}
+{% block content %}
+<h3>Add Category</h3>
+<br>
+<form action="" method="POST">
+    <div class="form-group">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <!-- getabsoluteurl takes care of post button logic -->
+        <button class='btn btn-secondary'>Add Category</button>
+    </div>
+</form>
+{% endblock %}
