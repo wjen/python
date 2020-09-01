@@ -41,7 +41,7 @@ def index(request):
 
 class BookListView(generic.ListView):
     model = Book
-    paginate_by = 2
+    paginate_by = 10
 
     # context_object_name = 'my_book_list'   # your own name for the list as a template variable
     # queryset = Book.objects.filter(title__icontains='war')[:5] # Get 5 books containing the title war
@@ -162,3 +162,19 @@ class AuthorDelete(PermissionRequiredMixin, DeleteView):
     permission_required = 'catalog.can_mark_returned'
     # use reverse_lazy for class based views
     success_url = reverse_lazy('authors')
+
+class BookCreate(PermissionRequiredMixin, CreateView):
+    model = Book
+    fields = '__all__'
+    permission_required = 'catalog.can_mark_returned'
+    
+class BookUpdate(PermissionRequiredMixin, UpdateView):
+    model = Book
+    permission_required = 'catalog.can_mark_returned'
+    fields = '__all__'
+
+class BookDelete(PermissionRequiredMixin, DeleteView):
+    model = Book
+    permission_required = 'catalog.can_mark_returned'
+    success_url = reverse_lazy('books')
+    
