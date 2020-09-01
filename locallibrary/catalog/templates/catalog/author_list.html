@@ -12,6 +12,9 @@
       <a href="{{ author.get_absolute_url }}">
       {{ author }} ({{author.date_of_birth}} - {% if author.date_of_death %}{{author.date_of_death}}{% endif %})
       </a>
+      <a href="{% url 'author-update' author.id %}" class='btn btn-secondary btn-sm mx-3 my-1' >Edit</a>
+      <a href="{% url 'author-delete' author.id %}" class='btn btn-danger btn-sm'>Delete</a>
+      
     </li>
   {% endfor %}
 
